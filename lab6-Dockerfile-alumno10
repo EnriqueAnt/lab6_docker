@@ -1,0 +1,15 @@
+# Usar la imagen base de Python
+FROM python:3.11-slim
+
+# Crear directorio de trabajo
+RUN mkdir /app
+WORKDIR /app
+
+# Copiar el notebook al contenedor
+COPY reduc-operation-alumno10.ipynb /app/
+
+# Instalar dependencias
+RUN pip install jupyter numpy numba
+
+# Comando por defecto al ejecutar el contenedor
+CMD ["ipython", "/app/reduc-operation-alumno10.ipynb", "10**5"]
